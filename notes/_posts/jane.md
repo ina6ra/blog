@@ -1,7 +1,7 @@
 ---
 name: Jane Doe
 position: Developer
-tags: [_archives]
+tags: [_posts]
 ---
 
 Jane has worked on Jekyll for the past *five years*.

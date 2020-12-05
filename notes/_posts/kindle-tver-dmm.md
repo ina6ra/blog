@@ -1,5 +1,5 @@
 ---
-tags: [_archives]
+tags: [_posts]
 title: Kindle Fire に TVer と DMM をインストールする方法
 created: '2020-10-23T23:35:32.328Z'
 modified: '2020-10-26T23:06:20.264Z'
