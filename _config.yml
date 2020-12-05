@@ -9,10 +9,10 @@ collections:
   posts:
     output: true
     # future: true
-    permalink: /:slug:output_ext
+    # permalink: /post/:slug:output_ext
   archives:
     output: true
-    # permalink: /post/:slug:output_ext
+    permalink: /:slug:output_ext
 defaults:
   - scope:
       # path: ""
