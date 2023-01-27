@@ -35,6 +35,22 @@ github_username:  jekyll
 theme: jekyll-theme-architect
 plugins:
   - jekyll-feed
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+feed:
+  collections:
+
+collections_dir: notes
+collections:
+  posts:
+    output: true
+    permalink: /:slug:output_ext
+defaults:
+  - scope:
+      type: posts
+    values:
+      layout: post
 
 # Exclude from processing.
 # The following items will not be processed, by default.
