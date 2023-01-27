@@ -22,12 +22,10 @@ title: Home
 
 <h2>Logs</h2>
 <ul>
-  {% comment %}
   {% assign items = site.wips | where_exp:"w", "w.status == 'publish'" | sort: 'modified' | reverse %}
   {% for w in items %}
   <li><a href="{{ site.baseurl }}{{ w.url }}">{{ w.title }}</a></li>
   {% endfor %}
-  {% endcomment %}
 </ul>
 
 <h2>Posts</h2>

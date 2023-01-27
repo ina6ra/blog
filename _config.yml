@@ -49,6 +49,9 @@ collections:
     permalink: /:slug:output_ext
   archives:
     output: true
+  wips:
+    output: true
+    permalink: /log/:slug:output_ext
 defaults:
   - scope:
       type: posts
@@ -58,6 +61,10 @@ defaults:
       type: archives
     values:
       layout: post
+  - scope:
+      type: wips
+    values:
+      layout: wip
 
 # Exclude from processing.
 # The following items will not be processed, by default.

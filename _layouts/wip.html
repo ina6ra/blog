@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<h2>{{ page.title }}</h2>
+<span>作成日: {{ page.date | date: "%Y-%m-%d" }} 更新日: {{ page.modified | date: "%Y-%m-%d" }}</span>
+
+{% if page.links.size != 0 %}
+<br><br>
+<p>{{ page.description }}</p>
+{% endif %}
+
+<ul>
+  {% for l in page.links %}
+  <li><a href="{{ l.url }}" target="_blank">{{ l.title }}</a><br>{{ l.text }}</li>
+  {% endfor %}
+</ul>
+
+{{ content }}

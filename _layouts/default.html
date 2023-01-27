@@ -72,12 +72,10 @@
 
           <h3>Logs</h3>
           <ul>
-            {% comment %}
             {% assign items = site.wips | where_exp:"w", "w.status == 'publish'" | sort: 'modified' | reverse %}
             {% for w in items %}
             <li><a href="{{ site.baseurl }}{{ w.url }}">{{ w.title }}</a></li>
             {% endfor %}
-            {% endcomment %}
           </ul>
 
           <!-- <h3>Posts</h3>
