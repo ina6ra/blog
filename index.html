@@ -12,6 +12,9 @@ title: Home
 {% endfor %}
 
 <h2>Zenn</h2>
+<script src="//rss.bloople.net/?url=https%3A%2F%2Fzenn.dev%2Fina6ra%2Ffeed&detail=-1&showtitle=false&type=js"></script>
+
+{% comment %}
 <ul>
 {% assign items = site.pages | where_exp:"p", "p.url contains 'articles'" | reverse %}
 {% for z in items %}
@@ -19,6 +22,7 @@ title: Home
 <!-- <p>{{ z.content | get_post_excerpt }}</p> -->
 {% endfor %}
 </ul>
+{% endcomment %}
 
 <h2>Logs</h2>
 <ul>
