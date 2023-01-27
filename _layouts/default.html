@@ -63,13 +63,11 @@
 
           <h3>Blogs</h3>
           <ul>
-            {% comment %}
             {% assign items = site.archives | sort: 'created' | reverse %}
             {% assign items = site.archives | where_exp:"a", "a.published == true" %}
             {% for a in site.archives %}
             <li><a href="{{ site.baseurl }}{{ a.url }}">{{ a.title }}</a></li>
             {% endfor %}
-            {% endcomment %}
           </ul>
 
           <h3>Logs</h3>

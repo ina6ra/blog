@@ -41,14 +41,21 @@ relative_links:
 feed:
   collections:
 
+excerpt_separator: "<!--more-->"
 collections_dir: notes
 collections:
   posts:
     output: true
     permalink: /:slug:output_ext
+  archives:
+    output: true
 defaults:
   - scope:
       type: posts
+    values:
+      layout: post
+  - scope:
+      type: archives
     values:
       layout: post
 
