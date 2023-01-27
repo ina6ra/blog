@@ -1,0 +1,7 @@
+{
+  "name"              : "Netlify CMS",
+  "short_name"        : "Netlify",
+  "description"       : "",
+  "start_url"         : "https://ina6ra.netlify.app/admin/",
+  "display"           : "standalone"
+}

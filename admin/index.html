@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+  <title>Netlify CMS</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link rel="manifest" href="https://ina6ra.netlify.app/admin/manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('https://ina6ra.netlify.app/admin/service-worker.js').then(() => {
+        console.log('Service Worker is registered!!');
+      });
+    }
+  </script>
+</head>
+<body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://cdn.jsdelivr.net/npm/netlify-cms@^2.0.0/dist/netlify-cms.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@^1.10/dayjs.min.js"></script>
+  <script>
+    var ModifiedControl = createClass({
+      render: function () {
+        const disabled = this.props.field.get('disabled', true);
+        const format = this.props.field.get('format', 'YYYY/MM/DD HH:mm');
+        const auto = this.props.field.get('auto', false);
+        var value = dayjs(this.props.value).format(format);
+        if (auto) value = dayjs().format(format);
+        return h('input', {
+          id: this.props.forID,
+          className: this.props.classNameWrapper,
+          type: 'text',
+          value: value,
+          disabled: disabled,
+        });
+      },
+    });
+    var schema = {
+      properties: {
+        disabled: {type: 'boolean'},
+        format: {type: 'string'},
+        auto: {type: 'boolean'},
+      },
+    }
+    CMS.registerWidget('modified', ModifiedControl, null, schema);
+  </script>
+</body>
+</html>

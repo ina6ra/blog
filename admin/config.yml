@@ -1,0 +1,122 @@
+backend:
+  name: github
+  repo: ina6ra/netlifycms
+  branch: main
+local_backend: true
+
+# media_folder: "content/blog"
+# public_folder: "/static"
+# media_folder: "media/uploads"
+media_folder: media
+# media_library:
+#    name: uploads
+site_url: https://ina6ra.netlify.app
+# logo_url: https://usomitainikagayakumachi.tokyo/icons/icon-512x512.png
+locale: ja # UIを日本語化
+
+# NetlifyCMSの編集画面をフロー化
+# 記事の作成、更新でプルリクが送られて、公開したら自動でマージされる
+# publish_mode: editorial_workflow
+
+collections:
+  - name: "zenn"
+    label: "Zenn"
+    extension: "md"
+    folder: "articles"
+    create: true
+    # publish: false
+    # slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{fields.slug}}"
+    sortable_fields: ["date"]
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Icon", name: "emoji", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["tech", "idea"], default: "tech" }
+      - { label: "Topics", name: "topics", widget: "list" }
+      - { label: "Publish", name: "published", widget: "boolean", default: false }
+      - { label: "Created", name: "date", widget: "datetime", date_format: "YYYY/MM/DD", time_format: "HH:mm" }
+      - { label: "Modified", name: "modified", widget: "datetime", date_format: "YYYY/MM/DD", time_format: "HH:mm" }
+      - { label: "Body", name: "body", widget: "text"}
+      # - { label: "Body", name: "body", widget: "markdown", modes: ["raw"] }
+    # view_filters:
+    #   - label: 下書き
+    #     field: published
+    #     pattern: false
+    #   - label: 公開済
+    #     field: published
+    #     pattern: true
+    view_groups:
+      - label: 公開済
+        field: published
+  - name: "blog"
+    label: "Blog"
+    extension: "md"
+    folder: "notes/_archives"
+    create: true
+    slug: "{{fields.slug}}"
+    sortable_fields: ["modified"]
+    # sort: "modified:desc"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Tag", name: "tags", widget: "list" }
+      - { label: "Publish", name: "published", widget: "boolean", default: false }
+      - { label: "Created", name: "created", widget: "datetime", date_format: "YYYY/MM/DD", time_format: "HH:mm" }
+      - { label: "Modified", name: "modified", widget: "datetime", date_format: "YYYY/MM/DD", time_format: "HH:mm", default: "" }
+      - { label: "Body", name: "body", widget: "text"}
+  - name: wip
+    label: WIP
+    extension: md
+    folder: notes/_wips
+    create: true
+    slug: "{{fields.slug}}"
+    sortable_fields: [modified]
+    editor:
+      preview: false
+    widget: object
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Slug, name: slug, widget: string}
+      - {label: Description, name: description, widget: string, required: false}
+      # - {label: Status, name: status, widget: select, options: [
+      #     {label: Draft, value: "0"},
+      #     {label: Published, value: "1"},
+      #     {label: Redirect, value: "-1"}
+      #   ], default: 0}
+      - {label: Status, name: status, widget: select, options: [draft, publish, redirect], default: draft}
+      - {label: Published, name: published, widget: boolean, default: false}
+      - {label: Created, name: date, widget: datetime, date_format: YYYY/MM/DD, time_format: HH:mm}
+      - {label: Modified, name: modified, widget: datetime, date_format: YYYY/MM/DD, time_format: HH:mm}
+      # - {label: Modified, name: modified, widget: modified, disabled: false, format: 'YYYY/MM/DD HH:mm', auto: true}
+      - label: Links
+        name: links
+        widget: list
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: URL, name: url, widget: string}
+          - {label: Text, name: text, widget: string}
+      - {label: Body, name: body, widget: text, required: false}
+    view_groups:
+      - label: 状態
+        field: status
+  - name: "memo"
+    label: "Memo"
+    extension: "md"
+    folder: "notes/_memo"
+    create: true
+    slug: "{{fields.slug}}"
+    sortable_fields: ["commit_date"]
+    editor:
+      preview: false
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Slug, name: slug, widget: string}
+      - {label: Type, name: type, widget: select, options: ["", Checklist], default: "", required: false}
+      # - {label: Created, name: created, widget: datetime, date_format: YYYY/MM/DD, time_format: HH:mm}
+      # - {label: Modified, name: modified, widget: datetime, date_format: YYYY/MM/DD, time_format: HH:mm}
+      - {label: Body, name: body, widget: text}
