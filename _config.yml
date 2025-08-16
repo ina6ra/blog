@@ -71,7 +71,7 @@ defaults:
       layout: wip
 
 notion:
-  cache: true
+  cache: false
   databases:
     - id: 251e33bf4dcf80f5a32ae8a3802d6711
       data: linksets
