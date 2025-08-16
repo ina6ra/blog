@@ -38,6 +38,8 @@ theme: jekyll-theme-architect
 plugins:
   - jekyll-feed
   - jekyll-relative-links
+  - jekyll-notion
+
 relative_links:
   enabled: true
 feed:
@@ -67,6 +69,12 @@ defaults:
       type: wips
     values:
       layout: wip
+
+notion:
+  cache: true
+  databases:
+    - id: 251e33bf4dcf80f5a32ae8a3802d6711
+      data: linksets
 
 # Exclude from processing.
 # The following items will not be processed, by default.

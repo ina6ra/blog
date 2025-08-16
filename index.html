@@ -39,6 +39,13 @@ title: Home
   {% endfor %}
 </ul>
 
+<h2>Notion</h2>
+<ul>
+{% for linkset in site.data.linksets %}
+  <li>{{ linkset.title }} {{ linkset.description }}</li>
+{% endfor %}
+</ul>
+
 {% comment %}
 <!-- タグプラグインを入れてないのにタグが動作している？？ -->
 {% for tag in site.tags %}
